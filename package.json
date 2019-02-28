@@ -1,0 +1,27 @@
+{
+  "name": "recruitment-applicant-tracking-system",
+  "version": "1.0.0",
+  "description": "RATS - Recruitment Applicant Tracking System. A MERN Stack application to manage applicants.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/venus11000/recruitment-applicant-tracking-system.git"
+  },
+  "keywords": [
+    "React",
+    "Express",
+    "MongoDB",
+    "Node",
+    "SASS",
+    "MERN_Stack"
+  ],
+  "author": "Venugopal - https://github.com/venus11000/",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/venus11000/recruitment-applicant-tracking-system/issues"
+  },
+  "homepage": "https://github.com/venus11000/recruitment-applicant-tracking-system#readme"
+}
