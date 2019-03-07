@@ -8,6 +8,11 @@ router.get('/', (req, res) => {
 	Job.find().then(jobs => res.json(jobs));
 });
 
+//	GET single Job
+router.get('/:id', (req, res) => {
+	Job.find({ _id: req.params.id }).then(jobs => res.json(jobs));
+});
+
 //	CREATE A Job
 router.post("/", function (req, res) {
 	const data = req.body;
@@ -31,6 +36,14 @@ router.put('/:id', (req, res) => {
 		.catch(err => { res.json(handleError(err, `Unable to edit the Job ${req.params.id}`)); });
 });
 
+//	GET All candidates applied for a Job
+router.get('/:id/candidates', (req, res) => {
+	console.log("Getting candidates for ", req.params.id);
+	getCandidatesByJob(req.params.id)
+		.then((candidates) => { res.json(candidates); })
+		.catch((err) => { res.json(handleError(err, )); });
+});
+
 const createJob = (newJob) => {
 	return Job.create(newJob)
 };
@@ -40,6 +53,9 @@ const editJob = (id, job) => {
 const deleteJob = (id) => {
 	return Job.findByIdAndRemove(id)
 };
+const getCandidatesByJob = (id) => {
+	return Job.find({ _id: id}, 'candidates').populate('candidates.candidate').exec();
+}
 const handleError = (err, errorMessage) => {
 	let error = {
 		success: false,

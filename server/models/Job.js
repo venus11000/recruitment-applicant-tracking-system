@@ -14,7 +14,7 @@ const jobSchema = new mongoose.Schema({
 	numberOfOpenings: Number,
 	location: String,
 	contactPerson: {
-		type: String,//mongoose.Schema.Types.ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User'
 	},
 	jobType: String,
