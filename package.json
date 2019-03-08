@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/venus11000/recruitment-applicant-tracking-system#readme",
   "dependencies": {
+    "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
     "express": "^4.16.4",

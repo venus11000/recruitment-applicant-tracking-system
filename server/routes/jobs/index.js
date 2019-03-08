@@ -5,19 +5,23 @@ const Job = require('../../models/Job');
 
 //	GET All Jobs
 router.get('/', (req, res) => {
-	Job.find().then(jobs => res.json(jobs));
+	Job.find()
+		.then(jobs => res.json(jobs))
+		.catch((err) => handleError(err, `Unable to get the Jobs`));
 });
 
 //	GET single Job
 router.get('/:id', (req, res) => {
-	Job.find({ _id: req.params.id }).then(jobs => res.json(jobs));
+	Job.find({ _id: req.params.id })
+		.then(job => res.json(job))
+		.catch((err) => handleError(err, `Unable to get a Job associate with id: ${req.params.id}`));
 });
 
 //	CREATE A Job
 router.post("/", function (req, res) {
 	const data = req.body;
 	createJob(data)
-		.then((resp) => { res.json({ success: true, message: 'Job created successfully' }); })
+		.then(() => { res.json({ success: true, message: 'Job created successfully' }); })
 		.catch(err => { res.json(handleError(err, `Unable to create the Job`)); });
 });
 
@@ -38,10 +42,9 @@ router.put('/:id', (req, res) => {
 
 //	GET All candidates applied for a Job
 router.get('/:id/candidates', (req, res) => {
-	console.log("Getting candidates for ", req.params.id);
 	getCandidatesByJob(req.params.id)
 		.then((candidates) => { res.json(candidates); })
-		.catch((err) => { res.json(handleError(err, )); });
+		.catch((err) => { res.json(handleError(err, `Unable to Get Candidates for the Job ${req.params.id}`)); });
 });
 
 const createJob = (newJob) => {

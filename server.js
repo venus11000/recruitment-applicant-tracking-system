@@ -1,11 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
+mongoose.set('useCreateIndex', true);
 const bodyParser = require('body-parser');
 
-const candidateRoutes = require('./server/routes/candidate');
-const userRoutes = require('./server/routes/user');
-const jobsRoutes = require('./server/routes/jobs');
-const eventRoutes = require('./server/routes/event');
+const candidateRoutes = require('./server/routes/candidate/index.js');
+const userRoutes = require('./server/routes/user/index.js');
+const jobsRoutes = require('./server/routes/jobs/index.js');
+const eventRoutes = require('./server/routes/event/index.js');
 
 const app = express();
 
